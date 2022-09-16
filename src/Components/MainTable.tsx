@@ -111,15 +111,14 @@ class MainTable extends React.Component<{}, typeImageTableState> {
 export default MainTable;
 
 function twitterAPI(screen_name: string, max_id: string) {
-  let endpoint = `${process.env.REACT_APP_API_ENDPOINT_URL}/fav?name=${screen_name}&maxid=${max_id}`;
+  let endpoint = `https://lfg2zm2n4d.execute-api.us-west-2.amazonaws.com/production/fav?name=${screen_name}&maxid=${max_id}`;
   return new Promise((resolve, reject) => {
     axios
       .get(endpoint, {
         headers: {
+          "Access-Control-Allow-Credentials": true,
           "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         },
-        responseType: "json",
       })
       .then((res) => {
         resolve(res.data);
