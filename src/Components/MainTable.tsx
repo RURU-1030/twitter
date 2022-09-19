@@ -116,8 +116,11 @@ function twitterAPI(screen_name: string, max_id: string) {
     axios
       .get(endpoint, {
         headers: {
-          "Access-Control-Allow-Credentials": true,
+          // "Access-Control-Allow-Credentials": true,
           "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE,OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Authorization, X-XSRF-TOKEN,Content-Type",
         },
       })
       .then((res) => {
